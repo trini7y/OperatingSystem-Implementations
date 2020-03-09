@@ -103,9 +103,9 @@ if __name__ == "__main__":
       for mem in range(len(busyMem )):
           if( Allocated[mem] == -1): 
                 print("\tLoc {0} \t\t\t\t| {1}K \t\t\t\t| J{2} \t\t\t\t| {3}K \t\t\t\t| {4} \t\t\t\t".format(identity[ mem ] , busyMem[ mem ], mem+1, allocatedJobs[mem], status(True)))
-          else:
-                jobId.append(mem+1)
-                
+          # else:
+          jobId.append(mem+1)
+
       for mem in range(len(freeMem)):  
            
                 print("\tLoc {0} \t\t\t\t| {1}K \t\t\t\t| J{2} \t\t\t\t| {3} \t\t\t\t| {4}".format( freeLocId[mem], freeMem[ mem ], jobId[mem], "____", status(False) ))
