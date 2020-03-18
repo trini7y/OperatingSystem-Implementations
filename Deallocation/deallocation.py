@@ -11,7 +11,7 @@ nonAllocated = []
 freeLocId = []
 allocatedJobs = []
 remainingJobs = []
-jobId = []
+jobId = 0
 
 
 # Creates random memomory size and locations
@@ -26,7 +26,9 @@ def randMem(start, stop, steps):
 def status(stat):
     if stat == -1:
         return "Busy"
-    else: return "Free"
+    elif stat == 0: 
+        return "Free"
+    else: return("Null Entry")
 
 #To check the firstfit and allocates memory dynamically
 def firstFit(memJobs, freeMem, memBlockSize):
@@ -36,7 +38,7 @@ def firstFit(memJobs, freeMem, memBlockSize):
         if(Allocated[j] == 0 and ( memJobs[i]  <= memBlockSize[j] )):
           Allocated[j] = -1
           nonAllocated[j] = 0
-          allocatedJobs.append(memJobs[j])
+          allocatedJobs.append(memJobs[i])
           busyMem.append(memBlockSize[j]);
           frag.append(memBlockSize[j] - memJobs[i])
           freeMem[j ] = -1
@@ -44,25 +46,14 @@ def firstFit(memJobs, freeMem, memBlockSize):
           identity.append(j)
           break 
 
-def deallocation( memorySize, memoryInput):
-    firstCase = []
-    memory = eval(input("Enter the memory to deallocation:"))
+def deallocation( allocated, memorySize, size):
+   
+    if(allocated[size] != -1):
+                  if(allocated[size] != -1):
+                      memorySize[size - 1] = memorySize[size - 1] + memorySize[size] + memorySize[size + 1]
+                      memorySize[size + 1] = status("Null Entry")
+                      print("\tLoc {0} \t\t\t\t| {1}K \t\t\t\t| J{2} \t\t\t\t| {3}K \t\t\t\t| {4} \t\t\t\t".format(identity[ i ] , memBlockSize[ i ], i+1, allocatedJobs[i], status(-2)))
 
-    for i in range(len(allocated)):
-            if(allocated[i] != -1):
-                  if(allocated[i - 1] != -1):
-                      allocated[i - 1] = allocated[i - 1] + allocated[i] + Allocated[i + 1]
-                      status()
-    def case1():
-      for i in memorySize:
-          memorySize[i] + memorySize[i+1]
-
-        firstCase.append(memorySize)
-        
-
-                        
-
-                  else: #Carry out case 1
 
 if __name__ == "__main__":
   
@@ -111,9 +102,26 @@ if __name__ == "__main__":
       for mem in range(len(busyMem )):
           if( Allocated[mem] == -1): 
                 print("\tLoc {0} \t\t\t\t| {1}K \t\t\t\t| J{2} \t\t\t\t| {3}K \t\t\t\t| {4} \t\t\t\t".format(identity[ mem ] , busyMem[ mem ], mem+1, allocatedJobs[mem], status(-1)))
-          else:
-                jobId.append(mem+1)
                 
       for mem in range(len(freeMem)):  
-           
-                print("\tLoc {0} \t\t\t\t| {1}K \t\t\t\t| J{2} \t\t\t\t| {3} \t\t\t\t| {4}".format( freeLocId[mem], freeMem[ mem ], jobId[mem], "____", status(0) ))
+                print("\tLoc {0} \t\t\t\t| {1}K \t\t\t\t| {2} \t\t\t| {3} \t\t\t\t| {4}".format( freeLocId[mem], freeMem[ mem ], " ___ " , "___", status(0) ))
+
+      counter = 0
+      size = int(input("Enter size to deallocate: "))
+      print("""
+              Select any memory location to deallocate, 
+              which is between two free memory
+
+
+              1) Enter ( -1 ) to exit..
+          """)
+      while(size != -1)
+          size = int(input("Enter size to deallocate: "))
+          print("""
+                  Select any memory location to deallocate, 
+                  which is between two free memory
+
+
+                  1) Enter ( -1 ) to exit..
+              """)
+          deallocation(Allocated, memBlockSize, size)

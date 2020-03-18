@@ -43,19 +43,7 @@ def firstFit(memJobs, freeMem, memBlockSize):
           freeJob[j] = -1
           identity.append(j)
           break
-
-# def deallocation():
-
-    # def checkCases(allocated):
-    #     for i in range(len(allocated)):
-    #         if(allocated[i] != -1):
-    #               if(allocated[i - 1] != -1):
-    #                     #carry out case 2
-
-    #               else: #Carry out case 1
-
-
-
+          
 if __name__ == "__main__":
   
       #Assign random memory size and locations 
