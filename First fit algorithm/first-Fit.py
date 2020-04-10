@@ -36,7 +36,7 @@ def firstFit(memJobs, freeMem, memBlockSize):
         if(Allocated[j] == 0 and (memBlockSize[j] >= memJobs[i]) ):
           Allocated[j] = -1
           nonAllocated[j] = 0
-          allocatedJobs.append(memJobs[j])
+          allocatedJobs.append(memJobs[i])
           busyMem.append(memBlockSize[j]);
           frag.append(memBlockSize[j] - memJobs[i])
           freeMem[j ] = -1
@@ -88,12 +88,9 @@ if __name__ == "__main__":
       print("Memory location \t|", "memory BlockSize \t|", "Job Number\t|", "Job Size\t|", "Status\t|")
 
 
-      for mem in range(len(busyMem )):
+      for mem in range(len( busyMem )):
           if( Allocated[mem] == -1): 
                 print("\tLoc {0} \t\t\t\t| {1}K \t\t\t\t| J{2} \t\t\t\t| {3}K \t\t\t\t| {4} \t\t\t\t".format(identity[ mem ] , busyMem[ mem ], mem+1, allocatedJobs[mem], status(True)))
-          # else:
-          jobId.append(mem+1)
-
+                
       for mem in range(len(freeMem)):  
-           
-                print("\tLoc {0} \t\t\t\t| {1}K \t\t\t\t| J{2} \t\t\t\t| {3} \t\t\t\t| {4}".format( freeLocId[mem], freeMem[ mem ], jobId[mem], "____", status(False) ))
+                print("\tLoc {0} \t\t\t\t| {1}K \t\t\t\t| {2} \t\t\t| {3} \t\t\t\t| {4}".format( freeLocId[mem], freeMem[ mem ], " ___ " , "___", status(False) ))
