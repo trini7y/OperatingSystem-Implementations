@@ -1,13 +1,12 @@
 class Jobs:
+    def __init__(self, jobId, jobSize):
+      self.jobId = jobId
+      self.jobSize = jobSize
+		#getters for job
+    def getJobId(self):
+      return self.jobId
 
-	def __init__(this, memRequested):
-		this.memRequested = memRequested
+    def getjobSize(self):
+       return self.jobSize
 
-    #getters for job
-	def getmemRequested():
-		return this.memRequested
-
-    #setter for job
-	def setmemRequested(this, memRequested):
-		this.memRequested = memRequested
-
+       
