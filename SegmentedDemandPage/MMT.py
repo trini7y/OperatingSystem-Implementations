@@ -1,19 +1,19 @@
 class mainMemory:
 
-    def __init__(self, memoryId, address):
+    def __init__(self, memoryId, size):
         self.memoryId = memoryId
-        self.address = address
+        self.size = size
         self.status = ''
         self.pageFrameNo = None
     
     def getMemoryId( self ):
         return self.memoryId
     
-    def getAddress( self ):
-        return self.address
+    def getSize( self ):
+        return self.size
     
     def getStatus( self ):
-        return self.address
+        return self.status
 
     def getPageFrameNo( self ):
         return self.pageFrameNo

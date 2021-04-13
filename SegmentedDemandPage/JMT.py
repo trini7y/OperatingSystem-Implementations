@@ -1,11 +1,17 @@
+import SMT
+from random import random
+
 class JobTable:
 
     def  __init__(self, jobId, size):
+       
         self.jobId = jobId
         self.size = size
         self.pointer = None
+        self.segment = []
 
-    
+        
+
     def setPointer(self, pointer):
         self.pointer  = pointer
         
@@ -16,4 +22,8 @@ class JobTable:
         return self.size
     
     def getPointer(self):
-        return self.pointer 
+        return self.pointer
+    
+    def jobTable(self):
+        print(" \t \t Job Table")
+    

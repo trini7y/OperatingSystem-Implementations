@@ -1,8 +1,9 @@
 class Segment:
 
-    def __init__(self, segmentNo, size):
+    def __init__(self, segmentNo, size, jobId):
         self.segmentNo = segmentNo
         self.size = size
+        self.jobId =  jobId
         self.pointer = None
         self.status = ''
 
@@ -24,5 +25,4 @@ class Segment:
     
     def getPMT(self):
         return self.pointer
-    
     
